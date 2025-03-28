@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the grid of argument values
-controller_type_values=("MD" "DDPG")
+controller_type_values=("MAD" "MA" "DDPG")
 tag=1
 episodes=1000
 

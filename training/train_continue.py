@@ -6,14 +6,10 @@ import time
 import datetime
 import warnings
 
-sys.path.append("./")
+sys.path.append("../")
 from params import (
-    init_a_controller,
-    init_ad_controller,
     init_ma_controller,
     init_mad_controller,
-    init_m_controller,
-    init_md_controller,
     init_ddpg_controller,
 )
 
@@ -24,7 +20,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument(
     "-c",
     "--controller_type",
-    choices=["A", "AD", "MA", "MAD", "M", "MD", "DDPG"],
+    choices=["MAD", "MA", "DDPG"],
     required=True,
 )
 parser.add_argument("-t", "--tag", type=int, required=True)
@@ -42,21 +38,13 @@ len_episode = 500
 save_frequency = 10
 cooldown_frequency = 100
 cooldown_duration = 2.5 * 60
-save_folder = f"ddpg_models/{CONTROLLER_TYPE}_{TAG}"
+save_folder = f"../ddpg_models/{CONTROLLER_TYPE}_{TAG}"
 
 # Initialize Agent
-if CONTROLLER_TYPE == "A":
-    DdpgAgent = init_a_controller()
-elif CONTROLLER_TYPE == "AD":
-    DdpgAgent = init_ad_controller()
+if CONTROLLER_TYPE == "MAD":
+    DdpgAgent = init_mad_controller()
 elif CONTROLLER_TYPE == "MA":
     DdpgAgent = init_ma_controller()
-elif CONTROLLER_TYPE == "MAD":
-    DdpgAgent = init_mad_controller()
-elif CONTROLLER_TYPE == "M":
-    DdpgAgent = init_m_controller()
-elif CONTROLLER_TYPE == "MD":
-    DdpgAgent = init_md_controller()
 elif CONTROLLER_TYPE == "DDPG":
     DdpgAgent = init_ddpg_controller()
 
