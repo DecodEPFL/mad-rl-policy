@@ -905,6 +905,19 @@ class MAController:
             self.update_ep_timestep()
             self.update_dynamics_input_time_window()
 
+        return (
+            rewards_list,
+            obs_list,
+            action_list,
+            w_list,
+            rewards_se,
+            rewards_ce,
+            rewards_cer,
+            rewards_oa,
+            rewards_ca,
+            distance_list,
+        )
+
     def save_model_weights(self, filename):
         """
         Saves the weights of the model (actor, critic, and optimizers) to a file.
