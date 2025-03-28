@@ -544,7 +544,6 @@ class DDPGController:
             self.episode_count += 1
             self.ou_noise.reset()
             self.state = torch.tensor(self.env.reset(), dtype=torch.float32).to(device)
-            self.dynamics_states_real = torch.zeros(self.num_dynamics_states).to(device)
             self.set_ep_initial_state(initial_state=self.state)
             self.reset_ep_timestep()
             episodic_reward = 0
