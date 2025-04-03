@@ -24,6 +24,7 @@ plt.rcParams.update(
 sys.path.append("../")
 from params import (
     init_ma_controller,
+    init_ad_controller,
     init_mad_controller,
     init_ddpg_controller,
 )
@@ -35,7 +36,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument(
     "-c",
     "--controller_type",
-    choices=["MAD", "MA", "DDPG"],
+    choices=["MAD", "AD", "MA", "DDPG"],
     required=True,
 )
 parser.add_argument("-t", "--tag", type=int, required=True)
@@ -57,6 +58,8 @@ if __name__ == "__main__":
     # Initialize Agent
     if CONTROLLER_TYPE == "MAD":
         DdpgAgent = init_mad_controller()
+    elif CONTROLLER_TYPE == "AD":
+        DdpgAgent = init_ad_controller()
     elif CONTROLLER_TYPE == "MA":
         DdpgAgent = init_ma_controller()
     elif CONTROLLER_TYPE == "DDPG":
