@@ -42,6 +42,12 @@ where `VALIDATION_TYPE` can be either from `Training` or `Generalization` initia
 
 ## Examples
 
+The following gifs show the closed loop trajectories of the 2 robots with the trained MAD Policy based controller. Validation of the trained policies is done by sampling initial conditions from the same neighborhoods around those seen in training. Generalization capabilities are assessed by interchanging the distributions of the initial conditions of the two agents.
+
+<p align="center">
+<img src="animations/validation.gif" alt="robot_trajectories_validation" width="400"/>
+<img src="animations/generalization.gif" alt="robot_trajectories_generalization" width="400"/>
+</p> 
 
 ## License
 
