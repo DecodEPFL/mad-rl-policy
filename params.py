@@ -5,6 +5,7 @@ sys.path.append("./")
 from environments.obstacles import Obstacle
 from environments.mobile_robots_env import MobileRobotsEnv
 from ddpg_agents.mad_controller import MADController
+from ddpg_agents.ad_controller import ADController
 from ddpg_agents.ma_controller import MAController
 from ddpg_agents.ddpg_controller import DDPGController
 
@@ -127,6 +128,36 @@ def init_mad_controller():
     )
 
     print("Initialized MAD Controller.")
+    return Controller
+
+
+def init_ad_controller():
+
+    u_lim = 1
+    agent_1_target = torch.FloatTensor([2.0, 2.0, 0.0, 0.0])
+    agent_2_target = torch.FloatTensor([-2.0, 2.0, 0.0, 0.0])
+    target_positions = torch.cat([agent_1_target, agent_2_target])
+
+    # Exploration Noise
+    noise_std = 0.01
+
+    Controller = ADController(
+        env=init_env(),
+        buffer_capacity=100000,
+        target_state=target_positions,
+        num_dynamics_states=16,
+        dynamics_input_time_window_length=500,
+        batch_size=64,
+        gamma=0.99,
+        tau=0.005,
+        actor_lr=0.001,
+        critic_lr=0.002,
+        std_dev=noise_std,
+        control_action_upper_bound=u_lim,
+        control_action_lower_bound=-u_lim,
+    )
+
+    print("Initialized AD Controller.")
     return Controller
 
 
