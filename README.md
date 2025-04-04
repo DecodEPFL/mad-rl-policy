@@ -61,3 +61,6 @@ This work is licensed under a
 [cc-by-shield]: https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg
 
 ## References
+[[1]](https://arxiv.org/pdf/2504.02565v1) Luca Furieri, Sucheth Shenoy, Danilo Saccani, Andrea Martin, Giancarlo Ferrari-Trecate.
+"MAD: A Magnitude And Direction Policy Parametrization for Stability Constrained Reinforcement Learning,"
+arXiv:2504.02565, 2025.
